@@ -35,7 +35,8 @@ class FitoSendData:
   image_read=image.read()
   print("enviando imagen lat.jpg")
   pack = (image_read)
-
+  print('*********************AQUI***********************')
+  print(image_read)
   socket.send(image_read)
   message_url0=socket.recv()
   print message_url0

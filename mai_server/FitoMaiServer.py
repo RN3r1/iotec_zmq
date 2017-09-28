@@ -5,6 +5,7 @@ import base64
 import requests
 import json
 from time import sleep
+from pymongo import MongoClient
 
 #from google.cloud import storage
 #from google.cloud import datastore
@@ -36,9 +37,14 @@ while True:
      }
      #r = requests.get("http://fitotron-api.appspot.com/sendSensado", params= pars)
      #data = r.text
+
      print myparams
      re = "inserted ok"
- 
+
+     client = MongoClient("mongodb://localhost:27017")
+     db = client['iotec-roeeyn']
+     result = db.logs.insert_one({"message": pars})
+
      socket.send(re)
 
     else:
